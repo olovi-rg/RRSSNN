@@ -1,4 +1,4 @@
-
+import Link from "next/link";
 // src/components/Footer.tsx
 import NewsletterForm from './NewsletterForm'; // Import the newsletter form component
 
@@ -55,7 +55,7 @@ export default function Footer() {
           <div className="mt-10 flex flex-col md:flex-row items-center justify-between border-t border-gray-800 pt-6 text-sm text-gray-300">
             <span>
               © Copyright 2025. All rights reserved.{" "}
-              <span className="text-orange-400 font-semibold"><a href='/'>AdvanceEdge</a></span>.
+              <span className="text-orange-400 font-semibold"><Link href='/'>AdvanceEdge</Link></span>.
             </span>
             <div className="flex gap-5 mt-4 md:mt-0">
               {/* Use appropriate icons below or Link to social media */}

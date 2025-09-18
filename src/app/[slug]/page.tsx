@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { PortableText, type SanityDocument } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
@@ -30,13 +31,16 @@ export default async function PostPage({
         ← Back to posts
       </Link>
       {postImageUrl && (
-        <img
-          src={postImageUrl}
-          alt={post.title}
-          className="aspect-video rounded-xl"
-          width="550"
-          height="310"
-        />
+        <div className="relative w-full h-[310px] rounded-xl overflow-hidden">
+          <Image
+            src={postImageUrl}
+            alt={post.title}
+            fill
+            className="object-cover rounded-xl"
+            sizes="(max-width: 550px) 100vw, 550px"
+            priority
+          />
+        </div>
       )}
       <h1 className="text-4xl font-bold mb-8">{post.title}</h1>
       <div className="prose">

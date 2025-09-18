@@ -5,14 +5,16 @@ import { useEffect, useState } from "react";
 import "keen-slider/keen-slider.min.css"; // ✅ Correct Path
 // Import Keen Slider and its CSS
 import { useKeenSlider } from "keen-slider/react";
-import sanityClient from "@sanity/client";
+// import sanityClient from "@sanity/client";
 import Modal from "@/components/Modal"; // Adjust path if needed
+
+import type { SanityImageSource } from '@sanity/image-url/lib/types/types';
 
 // Import Sanity client and helpers
 import { createClient, type SanityDocument } from 'next-sanity';
 import imageUrlBuilder from '@sanity/image-url';
-
-import Footer from '@/components/Footer';
+import type { KeenSliderInstance } from "keen-slider/react";
+// import Footer from '@/components/Footer';
 
 // ====================================================================
 // 1. CONFIGURE SANITY CLIENT
@@ -27,7 +29,7 @@ const client = createClient({
 
 // Helper function to generate image URLs from Sanity data
 const builder = imageUrlBuilder(client);
-function urlFor(source: any) {
+function urlFor(source: SanityImageSource) {
   return builder.image(source);
 }
 
@@ -69,7 +71,7 @@ export default function HomePage() {
   const [loaded, setLoaded] = useState(false);
 
   // Autoplay plugin for Keen Slider
-  const AutoplayPlugin = (slider: any) => {
+  const AutoplayPlugin = (slider: KeenSliderInstance) => {
     let timeout: ReturnType<typeof setTimeout>;
     let mouseOver = false;
     function clearNextTimeout() {
@@ -177,7 +179,7 @@ export default function HomePage() {
   <div className="relative z-10 max-w-[90rem] mx-auto w-full px-6 ">
   <div className="max-w-full text-left text-white pt-12 pb-24 md:pt-[19rem] md:pb-32">
     <h4 className="hero-sub-title">
-    The Legal Industry's
+    The Legal Industry&apos;s
       </h4>
       <h1 className="text-4xl md:text-6xl font-bold mb-4 py-8 hero-title">
       Trusted Partner in <br/>Growth & Efficiency</h1>
@@ -263,7 +265,7 @@ export default function HomePage() {
 </svg>
       </span>
       <h3 className="font-bold text-lg mb-2 text-gray-900">Premier Litigation Support</h3>
-      <p className="text-gray-600 text-sm">From mass tort case acquisition to specialized legal operations, we streamline your firm's growth.</p>
+      <p className="text-gray-600 text-sm">From mass tort case acquisition to specialized legal operations, we streamline your firm&apos;s growth.</p>
     </div>
     <div className="bg-white/90 backdrop-blur-sm shadow-lg rounded-lg p-6 flex flex-col items-start">
       <span className="text-2xl mb-2">
@@ -608,7 +610,7 @@ export default function HomePage() {
           Virtual Agents
         </h3>
         <p className="text-white/80 group-hover:text-gray-700 text-base leading-relaxed mb-4 transition">
-          Our Virtual Agents offer a flexible, affordable solution to streamline your firm's administrative and legal tasks.
+          Our Virtual Agents offer a flexible, affordable solution to streamline your firm&apos;s administrative and legal tasks.
         </p>
         <a href="#readmore" className="text-orange-500 font-semibold tracking-wide group-hover:text-orange-500 group-hover:border-b-2 group-hover:border-orange-500 transition">
           READ MORE

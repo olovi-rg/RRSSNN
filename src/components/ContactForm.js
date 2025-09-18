@@ -41,7 +41,7 @@ export default function ContactForm() {
       } else {
         setStatus(result.error || 'Error sending message');
       }
-    } catch (error) {
+    } catch (_error) {
       setStatus('Network error. Please try again.');
     } finally {
       setIsLoading(false);
